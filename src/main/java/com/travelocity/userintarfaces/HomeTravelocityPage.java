@@ -17,8 +17,7 @@ public class HomeTravelocityPage {
     public static final Target TEXT_WHERE_ARE_YOU_GOING = Target.the("Texto destino")
             .located(By.id("location-field-destination"));
     public static final String XPATH_LIST_RESULTS_GOING_TO = "//button[@data-stid='location-field-destination-result-item-button']";
-    public static final Target CHECK_IN_DATE = Target.the("Fecha check in")
-            .located(By.id("d1-btn"));
+    public static final Target CHECK_IN_DATE = Target.the("Fecha check in").located(By.id("d1-btn"));
     public static final String XPATH_DAYS_CALENDAR = "//button[contains(@class, 'uitk-new-date-picker-day')]";
     public static final Target BUTTON_SET_DATE = Target.the("Boton donde")
             .locatedBy("//button[@data-stid='apply-date-picker']");
@@ -32,7 +31,10 @@ public class HomeTravelocityPage {
             .locatedBy("//*[contains(@aria-labelledby,'increase-adults')]/parent::button");
     public static final Target BUTTON_INCREASE_CHILDREN = Target.the("Boton incrementar niños")
             .locatedBy("//*[contains(@aria-labelledby,'increase-children')]/parent::button");
-
+    public static final Target BUTTON_DONE_TRAVELERS = Target.the("Boton done travelers")
+            .locatedBy("//button[@data-testid='guests-done-button']");
+    public static final Target BUTTON_SEARCH_HOME = Target.the("Boton search en el home")
+            .locatedBy("//button[@data-testid='submit-button']");
 
 
 

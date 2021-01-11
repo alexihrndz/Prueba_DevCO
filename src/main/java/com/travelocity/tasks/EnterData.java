@@ -8,7 +8,6 @@ import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
-import sun.awt.AWTAccessor;
 
 import java.util.List;
 
@@ -17,7 +16,7 @@ import static net.serenitybdd.screenplay.Tasks.instrumented;
 
 public class EnterData implements Task {
 
-    private FiltersHotel filtersHotel;
+    private final FiltersHotel filtersHotel;
 
     public EnterData(FiltersHotel filtersHotel) {
         this.filtersHotel = filtersHotel;
@@ -39,9 +38,8 @@ public class EnterData implements Task {
 
         List<WebElementFacade> listDays = BrowseTheWeb.as(actor).findAll(HomeTravelocityPage.XPATH_DAYS_CALENDAR);
 
-        selectCheckInDay(listDays, actor);
-
-        selectCheckOutDay(listDays, actor);
+        selectCheckDayIntoCalendar(listDays, filtersHotel.getCheckIn(), actor);
+        selectCheckDayIntoCalendar(listDays, filtersHotel.getCheckOut(), actor);
 
         actor.attemptsTo(Click.on(HomeTravelocityPage.BUTTON_SET_DATE),
                 Click.on(HomeTravelocityPage.TEXT_TRAVELERS));
@@ -56,23 +54,17 @@ public class EnterData implements Task {
             actor.attemptsTo(Click.on(HomeTravelocityPage.BUTTON_INCREASE_CHILDREN));
         }
 
+        actor.attemptsTo(Click.on(HomeTravelocityPage.BUTTON_DONE_TRAVELERS),
+                Click.on(HomeTravelocityPage.BUTTON_SEARCH_HOME));
 
 
     }
 
-    private <T extends Actor> void selectCheckOutDay(List<WebElementFacade> listDays, T actor) {
-        for (WebElementFacade checkOut : listDays) {
-            if (checkOut.getAttribute(ATTRIBUTE_ARIA_LABEL).contains(filtersHotel.getCheckOut())) {
-                actor.attemptsTo(Click.on(checkOut));
-                break;
-            }
-        }
-    }
 
-    private <T extends Actor> void selectCheckInDay(List<WebElementFacade> listDays, T actor) {
-        for (WebElementFacade checkIn : listDays) {
-            if (checkIn.getAttribute(ATTRIBUTE_ARIA_LABEL).contains(filtersHotel.getCheckIn())) {
-                actor.attemptsTo(Click.on(checkIn));
+    private <T extends Actor> void selectCheckDayIntoCalendar(List<WebElementFacade> listDays, String checkDay, T actor) {
+        for (WebElementFacade checkIntoCalendar : listDays) {
+            if (checkIntoCalendar.getAttribute(ATTRIBUTE_ARIA_LABEL).contains(checkDay)) {
+                actor.attemptsTo(Click.on(checkIntoCalendar));
                 break;
             }
         }
