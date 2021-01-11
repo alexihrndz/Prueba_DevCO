@@ -1,0 +1,55 @@
+repositories {
+    mavenLocal()
+    jcenter()
+}
+
+buildscript {
+    repositories {
+        mavenLocal()
+        jcenter()
+    }
+    ext{
+        serenityVersion = '2.1.4'
+    }
+    dependencies {
+        classpath "net.serenity-bdd:serenity-gradle-plugin:" + serenityVersion
+        classpath "net.serenity-bdd:serenity-single-page-report:" + serenityVersion
+        classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.6.2"
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'net.serenity-bdd.aggregator'
+
+
+dependencies {
+    testCompile 'net.serenity-bdd:serenity-core:${serenityVersion}'
+    testCompile 'net.serenity-bdd:serenity-junit:${serenityVersion}'
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter', version: '5.6.1'
+
+    testCompile('org.assertj:assertj-core:3.11.1')
+    testCompile('org.slf4j:slf4j-simple:1.7.25')
+    testCompile('org.apache.poi:poi-ooxml:4.0.1')
+    testCompile('org.apache.poi:poi-ooxml-schemas:4.0.1')
+
+    compile 'net.serenity-bdd:serenity-core:${serenityVersion}'
+    compile 'net.serenity-bdd:serenity-junit:' + serenityVersion
+    compile 'net.serenity-bdd:serenity-cucumber:1.9.51'
+    compile 'net.serenity-bdd:serenity-screenplay:${serenityVersion}'
+    compile 'net.serenity-bdd:serenity-screenplay-webdriver:${serenityVersion}'
+    compile 'org.apache.poi:poi-ooxml:4.0.1'
+    compile 'org.apache.poi:poi-ooxml-schemas:4.0.1'
+}
+
+test {
+    ignoreFailures = true
+    testLogging.showStandardStreams = true
+    systemProperties System.getProperties()
+    systemProperty "cucumber.options", System.getProperty("cucumber.options")
+}
+
+gradle.startParameter.continueOnFailure = true
+
+test.finalizedBy(aggregate)

@@ -1,0 +1,3 @@
+[0110/200520.848:ERROR:filesystem_win.cc(129)] GetFileAttributes C:\Users\QV-2538\AppData\Local\Temp\scoped_dir23192_1467361015\Crashpad\attachments\d97e9399-2376-4483-9dff-3de7bba4042c: El sistema no puede encontrar la ruta especificada. (0x3)
+[0110/200520.849:ERROR:scoped_process_suspend.cc(40)] NtResumeProcess: Se intentó obtener acceso a un proceso que está cerrándose. (0xc000010a)
+[0110/201757.010:ERROR:directory_reader_win.cc(43)] FindFirstFile: El sistema no puede encontrar la ruta especificada. (0x3)
