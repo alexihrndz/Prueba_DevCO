@@ -32,7 +32,7 @@ public class SignInStepsDefinitions {
 
     @Cuando("^ingrese mis credenciales correo y password$")
     public void ingreseMisCredencialesY(DataTable credenciales) {
-        theActorInTheSpotlight().attemptsTo(SignIn.ahora(credenciales));
+        theActorInTheSpotlight().attemptsTo(SignIn.now(credenciales));
     }
 
     @Entonces("^puedo ver el usuario logueado$")

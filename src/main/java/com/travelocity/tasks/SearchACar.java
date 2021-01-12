@@ -18,7 +18,7 @@ import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisi
 
 public class SearchACar implements Task {
 
-    private FiltersCars filtersCars;
+    private final FiltersCars filtersCars;
 
     public SearchACar(FiltersCars filtersCars) {
         this.filtersCars = filtersCars;

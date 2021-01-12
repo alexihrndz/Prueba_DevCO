@@ -24,8 +24,8 @@ public class SignIn implements Task {
         this.credentials = credentials;
     }
 
-    public static SignIn ahora(DataTable credenciales) {
-        return instrumented(SignIn.class, credenciales);
+    public static SignIn now(DataTable credentials) {
+        return instrumented(SignIn.class, credentials);
     }
 
     @Override
