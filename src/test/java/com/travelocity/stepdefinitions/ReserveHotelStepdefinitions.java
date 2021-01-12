@@ -39,7 +39,7 @@ public class ReserveHotelStepdefinitions {
     @Cuando("^ingrese los filtros$")
     public void ingreseLosFiltros(DataTable dataTable) {
         FiltersHotel filtersHotel = new FiltersHotel(dataTable);
-        theActorInTheSpotlight().attemptsTo(SearchHotel.toFilters(filtersHotel));
+        theActorInTheSpotlight().attemptsTo(SearchHotel.with(filtersHotel));
 
     }
 

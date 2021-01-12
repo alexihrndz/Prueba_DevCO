@@ -10,6 +10,10 @@ public class ConstantsStrings {
     public static final String FLIGHTS = "Flights";
     public static final String XPATH_OPTIONS_HEADER = "//span[@class='uitk-tab-text']";
     public static final String AIRLINE = "airLine";
+    public static final String CARS = "Cars";
+    public static final String SAME_AS_PICK_UP = "Same as pick-up";
+    public static final String TOYOTA = "Toyota";
+    public static final String HOTEL = "hotel";
 
     private ConstantsStrings() {
     }

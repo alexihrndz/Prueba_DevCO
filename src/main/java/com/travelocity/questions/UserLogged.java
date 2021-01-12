@@ -21,7 +21,7 @@ public class UserLogged implements Question<Boolean> {
     }
 
 
-    public static UserLogged conNombre(DataTable nameUser) {
+    public static UserLogged withName(DataTable nameUser) {
         return new UserLogged(nameUser);
     }
 

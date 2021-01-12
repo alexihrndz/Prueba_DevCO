@@ -52,6 +52,26 @@ public class HomeTravelocityPage {
     public static final String XPATH_ORIGINS_FLIGHT_RESULTS = "//button[@data-stid='location-field-leg1-origin-result-item-button']";
     public static final String XPATH_DESTINATIONS_RESULTS = "//button[@data-stid='location-field-leg1-destination-result-item-button']";
 
+    public static final Target BUTTON_PICK_UP_CITY = Target.the("Boton de recogida del vehiculo")
+            .locatedBy("//button[@data-stid='location-field-locn-menu-trigger']");
+    public static final Target TEXT_PICK_UP_CITY = Target.the("Ciudad de recogida del vehiculo")
+            .locatedBy("//input[@data-stid='location-field-locn-menu-input']");
+    public static final String XPATH_PICK_UP_RESULTS = "//button[@data-stid='location-field-locn-result-item-button']";
+    public static final Target BUTTON_DROP_OFF_CITY = Target.the("Boton de recogida del vehiculo")
+            .locatedBy("//button[@data-stid='location-field-loc2-menu-trigger']");
+    public static final Target TEXT_DROP_OFF_CITY = Target.the("Ciudad de recogida del vehiculo")
+            .locatedBy("//input[@data-stid='location-field-loc2-menu-input']");
+    public static final String XPATH_DROP_OFF_RESULTS = "//button[@data-stid='location-field-loc2-result-item-button']";
+
+    public static final Target SELECT_PICK_UP_TIME = Target.the("Hora de recogida")
+            .locatedBy("//select[@aria-label='Pick-up time']");
+    public static final Target SELECT_DROP_OFF_TIME = Target.the("Hora de entrega")
+            .locatedBy("//select[@aria-label='Drop-off time']");
+
+
+    public static final Target SECTION_FAMILY_OFFERS = Target.the("Seccion de ofertas de familia")
+            .locatedBy("//a[contains(@href,'https://www.travelocity.com/lp/deals/family')]");
+
     private HomeTravelocityPage() {
     }
 }

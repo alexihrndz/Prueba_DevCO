@@ -1,8 +1,8 @@
 package com.travelocity.stepdefinitions;
 
+import com.travelocity.interactions.GoTo;
 import com.travelocity.interactions.SelectAirline;
 import com.travelocity.models.FiltersFlight;
-import com.travelocity.interactions.GoTo;
 import com.travelocity.questions.TripSummary;
 import com.travelocity.tasks.SearchFlight;
 import com.travelocity.utils.ConstantsStrings;
@@ -18,16 +18,13 @@ import net.serenitybdd.screenplay.actors.OnlineCast;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.List;
-import java.util.Map;
-
 import static com.travelocity.utils.ConstantsStrings.ACTOR_NAME;
 import static com.travelocity.utils.ConstantsStrings.URL_HOME;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorCalled;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 
-public class ReserveFlyStepsDefinitions {
+public class ReserveFlightStepsDefinitions {
 
     @Before
     public void setUp() {

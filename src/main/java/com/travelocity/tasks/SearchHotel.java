@@ -19,7 +19,7 @@ public class SearchHotel implements Task {
         this.filtersHotel = filtersHotel;
     }
 
-    public static SearchHotel toFilters(FiltersHotel filtersHotel) {
+    public static SearchHotel with(FiltersHotel filtersHotel) {
         return instrumented(SearchHotel.class, filtersHotel);
     }
 
