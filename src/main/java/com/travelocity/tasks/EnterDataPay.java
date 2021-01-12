@@ -1,18 +1,20 @@
 package com.travelocity.tasks;
 
+import com.travelocity.interactions.SelectFirstRoom;
+import com.travelocity.interactions.SwitchToNewWindow;
 import com.travelocity.models.DataReserveAndPay;
 import com.travelocity.userintarfaces.PaymentPage;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
-import net.serenitybdd.screenplay.actions.*;
+import net.serenitybdd.screenplay.actions.Click;
+import net.serenitybdd.screenplay.actions.Enter;
+import net.serenitybdd.screenplay.actions.SelectFromOptions;
 import net.serenitybdd.screenplay.waits.WaitUntil;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import static com.travelocity.userintarfaces.RoomListPage.XPATH_ROOM_LIST_RESERVE;
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isCurrentlyVisible;
 
@@ -30,14 +32,10 @@ public class EnterDataPay implements Task {
 
     @Override
     public <T extends Actor> void performAs(T actor) {
-        ArrayList<String> tabs2 = new ArrayList<> (BrowseTheWeb.as(actor).getDriver().getWindowHandles());
-        actor.attemptsTo(Switch.toWindow(tabs2.get(1)));
-
-        List<WebElementFacade> roomList = BrowseTheWeb.as(actor).findAll(XPATH_ROOM_LIST_RESERVE);
-        BrowseTheWeb.as(actor).waitFor(roomList.get(1)).isClickable();
 
         actor.attemptsTo(
-                JavaScriptClick.on(roomList.get(1)),
+                SwitchToNewWindow.now(),
+                SelectFirstRoom.onList(),
                 WaitUntil.the(PaymentPage.TEXT_CONTACT_NAME, isCurrentlyVisible()).forNoMoreThan(30).seconds(),
                 Enter.theValue(dataReserveAndPay.getContactName()).into(PaymentPage.TEXT_CONTACT_NAME),
                 SelectFromOptions.byValue(dataReserveAndPay.getCountryCode()).from(PaymentPage.SELECT_COUNTRY_CODE),

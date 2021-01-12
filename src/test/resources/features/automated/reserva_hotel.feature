@@ -7,7 +7,7 @@ Característica: Reserva de hotel en travelocity
     Dado que yo como usuario quiero realizar la reserva de hotel en travelocity
     Cuando ingrese los filtros
       | goingTo             | checkIn      | checkOut     | travelersAdults | travelersChildren |
-      | Medellin el Poblado | Jan 15, 2021 | Jan 16, 2021 | 2               | 1                 |
+      | Medellin el Poblado | Jan 15, 2021 | Jan 18, 2021 | 2               | 1                 |
     Entonces puedo ver la lista de resultados y seleccionar el de menor precio
     Cuando seleccione la opcion de reserva lleno los datos de pago
       | contactName | countryCode | phoneNumber | creditCardName  | creditCardNumber | expMonth | expYear | secCode | countryAddress | billingAddres1         | city     | State     | zipCode | emailAddress     |

@@ -4,7 +4,7 @@ import com.travelocity.models.DataReserveAndPay;
 import com.travelocity.models.FiltersHotel;
 import com.travelocity.questions.HotelList;
 import com.travelocity.questions.ItiniraryNumber;
-import com.travelocity.tasks.EnterData;
+import com.travelocity.tasks.SearchHotel;
 import com.travelocity.tasks.EnterDataPay;
 import com.travelocity.tasks.SelectLowerPrice;
 import cucumber.api.DataTable;
@@ -15,8 +15,6 @@ import cucumber.api.java.es.Entonces;
 import net.serenitybdd.screenplay.actions.Open;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import static com.travelocity.utils.ConstantsStrings.ACTOR_NAME;
 import static com.travelocity.utils.ConstantsStrings.URL_HOME;
@@ -32,8 +30,6 @@ public class ReserveHotelStepdefinitions {
         OnStage.setTheStage(new OnlineCast());
     }
 
-    Logger logger = LoggerFactory.getLogger(getClass());
-
     @Dado("^que yo como usuario quiero realizar la reserva de hotel en travelocity$")
     public void queYoComoUsuarioQuieroRealizarLaReservaDeHotelEnTravelocity() {
         theActorCalled(ACTOR_NAME).wasAbleTo(Open.url(URL_HOME));
@@ -41,9 +37,9 @@ public class ReserveHotelStepdefinitions {
 
 
     @Cuando("^ingrese los filtros$")
-    public void ingreseLosFiltros(DataTable datos) {
-        FiltersHotel filtersHotel = new FiltersHotel(datos);
-        theActorInTheSpotlight().attemptsTo(EnterData.toFilters(filtersHotel));
+    public void ingreseLosFiltros(DataTable dataTable) {
+        FiltersHotel filtersHotel = new FiltersHotel(dataTable);
+        theActorInTheSpotlight().attemptsTo(SearchHotel.toFilters(filtersHotel));
 
     }
 
@@ -55,8 +51,8 @@ public class ReserveHotelStepdefinitions {
     }
 
     @Cuando("^seleccione la opcion de reserva lleno los datos de pago$")
-    public void seleccioneLaOpcionDeReservaLlenoLosDatosDePago(DataTable dataPay) {
-        DataReserveAndPay dataReserveAndPay = new DataReserveAndPay(dataPay);
+    public void seleccioneLaOpcionDeReservaLlenoLosDatosDePago(DataTable dataTable) {
+        DataReserveAndPay dataReserveAndPay = new DataReserveAndPay(dataTable);
         theActorInTheSpotlight().attemptsTo(EnterDataPay.intoForm(dataReserveAndPay));
 
     }

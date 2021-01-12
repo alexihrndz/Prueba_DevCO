@@ -33,7 +33,7 @@ public class UserLogged implements Question<Boolean> {
         List<WebElementFacade> labelsHeader = BrowseTheWeb.as(actor).findAll(HomeTravelocityPage.XPATH_LABEL_HEADER);
         for (WebElementFacade webElementFacade : labelsHeader) {
             String a = webElementFacade.getText();
-            if (a.equals(data.get(1))) {
+            if (a.equals(data.get(1).toString())) {
                 result = true;
                 break;
             }
