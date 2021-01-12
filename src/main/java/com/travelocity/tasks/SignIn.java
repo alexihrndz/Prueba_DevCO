@@ -1,6 +1,7 @@
 package com.travelocity.tasks;
 
 import com.travelocity.models.Credentials;
+import com.travelocity.userintarfaces.HomeTravelocityPage;
 import com.travelocity.userintarfaces.SignInTravelocityPage;
 import cucumber.api.DataTable;
 import net.serenitybdd.screenplay.Actor;
@@ -10,7 +11,6 @@ import net.serenitybdd.screenplay.actions.Enter;
 
 import static com.travelocity.models.Credentials.getEmail;
 import static com.travelocity.models.Credentials.getPassword;
-import static com.travelocity.userintarfaces.HomeTravelocityPage.BUTTON_SIGN_IN;
 import static com.travelocity.userintarfaces.HomeTravelocityPage.LINK_SING_IN;
 import static com.travelocity.userintarfaces.SignInTravelocityPage.TEXT_EMAIL;
 import static com.travelocity.userintarfaces.SignInTravelocityPage.TEXT_PASSWORD;
@@ -24,8 +24,8 @@ public class SignIn implements Task {
         this.credentials = credentials;
     }
 
-    public static SignIn ahora(DataTable credenciales) {
-        return instrumented(SignIn.class, credenciales);
+    public static SignIn now(DataTable credentials) {
+        return instrumented(SignIn.class, credentials);
     }
 
     @Override
@@ -33,10 +33,10 @@ public class SignIn implements Task {
         new Credentials(credentials);
 
         actor.attemptsTo(Click.on(LINK_SING_IN),
-                Click.on(BUTTON_SIGN_IN),
+                Click.on(HomeTravelocityPage.BUTTON_SIGN_IN),
                 Enter.theValue(getEmail()).into(TEXT_EMAIL),
                 Enter.theValue(getPassword()).into(TEXT_PASSWORD),
-                Click.on(BUTTON_SIGN_IN)
+                Click.on(SignInTravelocityPage.BUTTON_SIGN_IN)
         );
     }
 }

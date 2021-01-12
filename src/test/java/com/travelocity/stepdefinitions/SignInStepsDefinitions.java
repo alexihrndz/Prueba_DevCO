@@ -32,11 +32,16 @@ public class SignInStepsDefinitions {
 
     @Cuando("^ingrese mis credenciales correo y password$")
     public void ingreseMisCredencialesY(DataTable credenciales) {
-        theActorInTheSpotlight().attemptsTo(SignIn.ahora(credenciales));
+        theActorInTheSpotlight().attemptsTo(SignIn.now(credenciales));
     }
 
     @Entonces("^puedo ver el usuario logueado$")
     public void puedoVerElUsuarioNombreLogueado(DataTable nombre) {
-        theActorInTheSpotlight().should(seeThat(UserLogged.conNombre(nombre)));
+        theActorInTheSpotlight().should(seeThat(UserLogged.withName(nombre)));
+    }
+
+    @Dado("^que yo quiero realizar una operacion en travelocity$")
+    public void queYoQuieroRealizarUnaOperacionEnTravelocity() {
+        theActorCalled(ACTOR_NAME).wasAbleTo(Open.url(URL_HOME));
     }
 }

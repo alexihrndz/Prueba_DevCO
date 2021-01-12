@@ -7,11 +7,11 @@ import java.util.Map;
 
 public class FiltersHotel {
 
-    private String goingTo;
-    private String checkIn;
-    private String checkOut;
-    private String travelersAdults;
-    private String travelersChildren;
+    private final String goingTo;
+    private final String checkIn;
+    private final String checkOut;
+    private final String travelersAdults;
+    private final String travelersChildren;
 
     public String getGoingTo() {
         return goingTo;
